@@ -125,3 +125,18 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+#message-area{
+    margin:100px 400px;
+    /* padding: 20px;
+    border-radius: 10px; */
+    color: white;
+    /* background:rgb(0, 83, 0); */
+    text-align: center;
+    display: none;
+}
+#message-area h1{
+    background:rgb(0, 83, 0);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 40px;
+}
