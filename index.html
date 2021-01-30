@@ -78,7 +78,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="sub-total">$00</p>
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="tax-amount">$0</p>
                     </div>
                 </div>
                 <hr>
@@ -96,7 +96,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="grand-total">$00</p>
                     </div>
                 </div>
             </div>
@@ -116,8 +116,9 @@
 
         <!-- Js program is starts here-->
         <script>
+
             document.getElementById("first-ticket-increase").addEventListener('click', function () {
-                handleTicketChange('first',true);
+                handleTicketChange('first', true);
                 //     const ticketInput = document.getElementById("ticket-count");
                 //     const ticketCount = parseInt(ticketInput.value);
                 //     const ticketNewCount = ticketCount + 1;
@@ -125,7 +126,7 @@
             })
 
             document.getElementById("first-ticket-decrease").addEventListener('click', function () {
-                handleTicketChange('first',false);
+                handleTicketChange('first', false);
                 //     const ticketInput = document.getElementById("ticket-count");
                 //     const ticketCount = parseInt(ticketInput.value);
                 //     const ticketNewCount = ticketCount - 1;
@@ -133,15 +134,14 @@
             })
 
             document.getElementById("economy-ticket-increase").addEventListener('click', function () {
-                handleTicketChange('economy',true);
+                handleTicketChange('economy', true);
             })
             document.getElementById("economy-ticket-decrease").addEventListener('click', function () {
-                handleTicketChange('economy',false);
+                handleTicketChange('economy', false);
             })
 
             function handleTicketChange(ticketName, isIncrease) {
-                const ticketInput = document.getElementById(ticketName + "-ticket-count");
-                const ticketCount = parseInt(ticketInput.value);
+                const ticketCount = getInputValue(ticketName);
                 let ticketNewCount = ticketCount;
                 if (isIncrease == true) {
                     ticketNewCount = ticketCount + 1;
@@ -149,12 +149,40 @@
                 if (isIncrease == false && ticketCount > 0) {
                     ticketNewCount = ticketCount - 1;
                 }
-                ticketInput.value = ticketNewCount;
+                document.getElementById(ticketName + '-ticket-count').value = ticketNewCount;
+                let ticketTotal = 0;
+                if (ticketName == 'first') {
+                    ticketTotal = ticketNewCount * 150;
+                }
+                if (ticketName == 'economy') {
+                    ticketTotal = ticketNewCount * 100;
+                }
+                calculateTotal()
             }
 
-            
+            // function for subtotal
+            function calculateTotal() {
+                const firstTicketCount = getInputValue('first');
+
+                const economyTicketCount = getInputValue('economy');
+                
+                const subTotal = firstTicketCount * 150 + economyTicketCount * 100;
+                document.getElementById("sub-total").innerText = '$' + subTotal;
+
+                const tax = Math.round(subTotal * 0.1);
+                document.getElementById("tax-amount").innerText = '$' + tax;
+
+                const grandTotal = subTotal + tax;
+                document.getElementById('grand-total').innerText = '$' + grandTotal;
+
+            }
 
 
+            function getInputValue(ticketName) {
+                const ticketInput = document.getElementById(ticketName + "-ticket-count");
+                const ticketCount = parseInt(ticketInput.value);
+                return ticketCount;
+            }
 
 
         </script>
