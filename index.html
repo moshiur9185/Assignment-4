@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -41,7 +42,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -51,20 +52,24 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="first-ticket-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+                    <button id="first-ticket-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button id="first-ticket-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    <!-- <p>+ -</p> -->
                 </div>
             </div>
-            
+
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <input id="economy-ticket-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <button id="economy-ticket-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    <button id="economy-ticket-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    <!-- <p> <span>+</span> <span>-</span> </p> -->
                 </div>
             </div>
             <div class="calculations">
@@ -100,11 +105,59 @@
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Here's what to expect on a discovery flight, a short flight with a certified flight instructor. It's not enjoyable to get bounced around, even for experienced pilots, but Most instructors really are just excited to share the world of flying with others.</p>
+            <p>Here's what to expect on a discovery flight, a short flight with a certified flight instructor. It's not
+                enjoyable to get bounced around, even for experienced pilots, but Most instructors really are just
+                excited to share the world of flying with others.</p>
         </div>
-    </section>
+        </section>
 
-    <!--Thank You-->
+        <!--Thank You-->
+
+
+        <!-- Js program is starts here-->
+        <script>
+            document.getElementById("first-ticket-increase").addEventListener('click', function () {
+                handleTicketChange('first',true);
+                //     const ticketInput = document.getElementById("ticket-count");
+                //     const ticketCount = parseInt(ticketInput.value);
+                //     const ticketNewCount = ticketCount + 1;
+                //     ticketInput.value = ticketNewCount;
+            })
+
+            document.getElementById("first-ticket-decrease").addEventListener('click', function () {
+                handleTicketChange('first',false);
+                //     const ticketInput = document.getElementById("ticket-count");
+                //     const ticketCount = parseInt(ticketInput.value);
+                //     const ticketNewCount = ticketCount - 1;
+                //     ticketInput.value = ticketNewCount;
+            })
+
+            document.getElementById("economy-ticket-increase").addEventListener('click', function () {
+                handleTicketChange('economy',true);
+            })
+            document.getElementById("economy-ticket-decrease").addEventListener('click', function () {
+                handleTicketChange('economy',false);
+            })
+
+            function handleTicketChange(ticketName, isIncrease) {
+                const ticketInput = document.getElementById(ticketName + "-ticket-count");
+                const ticketCount = parseInt(ticketInput.value);
+                let ticketNewCount = ticketCount;
+                if (isIncrease == true) {
+                    ticketNewCount = ticketCount + 1;
+                }
+                if (isIncrease == false && ticketCount > 0) {
+                    ticketNewCount = ticketCount - 1;
+                }
+                ticketInput.value = ticketNewCount;
+            }
+
+            
+
+
+
+
+        </script>
 </body>
 
 </html>

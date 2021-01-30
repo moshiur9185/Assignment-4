@@ -66,12 +66,17 @@ nav ul li a:hover, a.active{
     min-width: 300px;
 }
 .plus-minus-btn{
-    color: #3352F2;
-    font-size: 30px;
-    padding: 2px;
-    margin-top: 10px;
     word-spacing: 20px;
 }
+.btn-default{
+    color: #3352F2;
+    border: none;
+    background-color: #fff;
+    font-size: 20px;
+    padding: 2px;
+    margin-top: 10px;  
+}
+
 .booking-form  .calculations{
     margin: 10px 0;
 }
