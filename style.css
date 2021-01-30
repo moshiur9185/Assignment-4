@@ -126,17 +126,27 @@ nav ul li a:hover, a.active{
     justify-content: space-between;
 }
 #message-area{
-    margin:100px 400px;
-    /* padding: 20px;
-    border-radius: 10px; */
+    margin:10% 20%;
     color: white;
-    /* background:rgb(0, 83, 0); */
     text-align: center;
     display: none;
 }
-#message-area h1{
+#message-area h1{   
     background:rgb(0, 83, 0);
     padding: 20px;
     border-radius: 10px;
     font-size: 40px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.479);
+}
+.under-massage{
+    color: rgb(182, 38, 57);
+    padding-top: 40px;
+    height: 200px;
+    border-radius: 10px;
+    background: rgba(223, 223, 223, 0.493);
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.493);
+    
+}
+.under-massage h2{
+    font-size: 30px;
 }

@@ -113,34 +113,28 @@
         </div>
     </main>
     <section id="message-area">
-        <h1>Your Booking Is Successful</h1>
-        <div class="under-massege"> 
+        <h1>Your Booking Is Successful...</h1>
+        <div class="under-massage ">
             <h2>Thank You!</h2>
             <p>Your booking has been confirm</p>
-            <p>Booking ID : #F-007-A85e2a</p>
+            <p style="color:blue">Booking ID : #F-007-A85e2a</p>
+            <i class="fas fa-check-circle" style="font-size: 40px; color: rgb(51, 82, 242);"></i>
         </div>
+
     </section>
 
-    <!--Thank You-->
+    
 
 
     <!-- Js program is starts here-->
     <script>
-
+        // Ticket handler function call here...
         document.getElementById("first-ticket-increase").addEventListener('click', function () {
             handleTicketChange('first', true);
-            //     const ticketInput = document.getElementById("ticket-count");
-            //     const ticketCount = parseInt(ticketInput.value);
-            //     const ticketNewCount = ticketCount + 1;
-            //     ticketInput.value = ticketNewCount;
         })
 
         document.getElementById("first-ticket-decrease").addEventListener('click', function () {
             handleTicketChange('first', false);
-            //     const ticketInput = document.getElementById("ticket-count");
-            //     const ticketCount = parseInt(ticketInput.value);
-            //     const ticketNewCount = ticketCount - 1;
-            //     ticketInput.value = ticketNewCount;
         })
 
         document.getElementById("economy-ticket-increase").addEventListener('click', function () {
@@ -150,6 +144,7 @@
             handleTicketChange('economy', false);
         })
 
+        // ticket handler function starts here...
         function handleTicketChange(ticketName, isIncrease) {
             const ticketCount = getInputValue(ticketName);
             let ticketNewCount = ticketCount;
@@ -169,8 +164,9 @@
             }
             calculateTotal()
         }
+        // ticket handler function ends here..
 
-        // function for subtotal
+        // function for subtotal...
         function calculateTotal() {
             const firstTicketCount = getInputValue('first');
 
@@ -187,22 +183,23 @@
 
         }
 
-
+        // function for input value...
         function getInputValue(ticketName) {
             const ticketInput = document.getElementById(ticketName + "-ticket-count");
             const ticketCount = parseInt(ticketInput.value);
             return ticketCount;
         }
+
+        // Booking successful message showing js program...
         const bookingBtn = document.getElementById("booking").addEventListener('click', function () {
             const homepageArea = document.getElementById('homepage-area');
             homepageArea.style.display = "none";
             const messageArea = document.getElementById("message-area");
             messageArea.style.display = "block";
         })
-
-
-
+        // ends here....
     </script>
+    <!--Thank You-->
 </body>
 
 </html>
